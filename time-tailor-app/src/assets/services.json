@@ -1,0 +1,220 @@
+{
+    "salon": {
+      "name": "Glamour Salon",
+      "address": "123 Beauty Avenue, Suite 100, Cityville",
+      "currency": "USD"
+    },
+    "services": [
+      {
+        "id": 1,
+        "name": "Haircut",
+        "description": "Professional haircut tailored to your style.",
+        "duration": 30,
+        "price": 25,
+        "addons": [
+          {
+            "id": 101,
+            "name": "Beard Trim",
+            "duration": 15,
+            "price": 10
+          },
+          {
+            "id": 102,
+            "name": "Shampoo",
+            "duration": 10,
+            "price": 5
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Hair Coloring",
+        "description": "Full hair coloring service with premium products.",
+        "duration": 90,
+        "price": 75,
+        "addons": [
+          {
+            "id": 103,
+            "name": "Root Touch-Up",
+            "duration": 30,
+            "price": 25
+          },
+          {
+            "id": 104,
+            "name": "Hair Treatment",
+            "duration": 15,
+            "price": 15
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Manicure",
+        "description": "Complete manicure service for beautiful nails.",
+        "duration": 45,
+        "price": 20,
+        "addons": [
+          {
+            "id": 105,
+            "name": "Nail Art",
+            "duration": 20,
+            "price": 15
+          },
+          {
+            "id": 106,
+            "name": "Gel Polish",
+            "duration": 15,
+            "price": 10
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Pedicure",
+        "description": "Relaxing pedicure with foot massage.",
+        "duration": 60,
+        "price": 35,
+        "addons": [
+          {
+            "id": 107,
+            "name": "Foot Scrub",
+            "duration": 15,
+            "price": 10
+          },
+          {
+            "id": 108,
+            "name": "Paraffin Treatment",
+            "duration": 20,
+            "price": 15
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Facial",
+        "description": "Rejuvenating facial treatment for glowing skin.",
+        "duration": 60,
+        "price": 50,
+        "addons": [
+          {
+            "id": 109,
+            "name": "Anti-Aging Mask",
+            "duration": 20,
+            "price": 20
+          },
+          {
+            "id": 110,
+            "name": "Extra Extraction",
+            "duration": 15,
+            "price": 10
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Massage",
+        "description": "Full body massage for relaxation and stress relief.",
+        "duration": 60,
+        "price": 60,
+        "addons": [
+          {
+            "id": 111,
+            "name": "Hot Stones",
+            "duration": 15,
+            "price": 20
+          },
+          {
+            "id": 112,
+            "name": "Aromatherapy",
+            "duration": 10,
+            "price": 15
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "name": "Waxing",
+        "description": "Hair removal service for smooth skin.",
+        "duration": 30,
+        "price": 40,
+        "addons": [
+          {
+            "id": 113,
+            "name": "Eyebrow Shaping",
+            "duration": 10,
+            "price": 10
+          },
+          {
+            "id": 114,
+            "name": "Underarm Wax",
+            "duration": 15,
+            "price": 15
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "name": "Makeup",
+        "description": "Professional makeup application for any occasion.",
+        "duration": 60,
+        "price": 55,
+        "addons": [
+          {
+            "id": 115,
+            "name": "False Lashes",
+            "duration": 10,
+            "price": 10
+          },
+          {
+            "id": 116,
+            "name": "Contouring",
+            "duration": 15,
+            "price": 15
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "name": "Blowout",
+        "description": "Blow-dry and styling for perfect hair.",
+        "duration": 30,
+        "price": 30,
+        "addons": [
+          {
+            "id": 117,
+            "name": "Deep Conditioning",
+            "duration": 15,
+            "price": 20
+          },
+          {
+            "id": 118,
+            "name": "Scalp Massage",
+            "duration": 10,
+            "price": 10
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "name": "Hair Treatment",
+        "description": "Nourishing hair treatment for healthy hair.",
+        "duration": 45,
+        "price": 40,
+        "addons": [
+          {
+            "id": 119,
+            "name": "Keratin Treatment",
+            "duration": 60,
+            "price": 50
+          },
+          {
+            "id": 120,
+            "name": "Olaplex Treatment",
+            "duration": 30,
+            "price": 30
+          }
+        ]
+      }
+    ]
+  }
+  
