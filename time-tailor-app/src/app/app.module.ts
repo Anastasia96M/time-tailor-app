@@ -8,6 +8,7 @@ import { ServiceTableComponent } from './service-table/service-table.component';
 import { MaterialModule } from './material/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SalonService } from './services/salon.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  exports:[],
+  providers: [SalonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

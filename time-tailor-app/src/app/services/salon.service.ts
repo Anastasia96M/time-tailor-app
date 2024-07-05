@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 
-interface Salon {
+
+export interface Salon {
   name: string;
   address: string;
   currency: string;
 }
 
-interface Service {
+export interface Service {
   id: number;
   name: string;
   description: string;
@@ -18,14 +19,14 @@ interface Service {
   addons: Addon[];
 }
 
-interface Addon {
+export interface Addon {
   id: number;
   name: string;
   duration: number;
   price: number;
 }
 
-interface SalonData {
+export interface SalonData {
   salon: Salon;
   services: Service[];
 }
@@ -34,11 +35,15 @@ interface SalonData {
   providedIn: 'root'
 })
 export class SalonService {
-  private apiUrl = 'http://localhost:3000/data';
+  private apiUrl = 'http://localhost:3000';
 
   constructor(private http: HttpClient) { }
 
-  getData(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
+  getData(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/data`);
+  }
+
+  getSalonData(): Observable<SalonData> {
+    return this.http.get<SalonData>(`${this.apiUrl}/data`);
   }
 }
