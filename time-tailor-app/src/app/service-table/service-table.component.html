@@ -8,9 +8,6 @@
       <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Haircut">
     </mat-form-field>
 
-    <button mat-button color="primary" (click)="bookSelectedServices()" [disabled]="!hasSelectedServices()">Book
-      Selected</button>
-
     <table mat-table [dataSource]="dataSource" matSort>
 
       <!-- Checkbox Column -->
@@ -77,6 +74,6 @@
     <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 
   </mat-card-content>
-  <mat-card-actions align="end"> <button mat-flat-button color="primary" (click)="navigateToContactInfo()">Book
+  <mat-card-actions align="end"> <button  mat-flat-button color="primary" [disabled]="!hasSelectedServices()" (click)="navigateToContactInfo()" >Book
       service</button></mat-card-actions>
 </mat-card>

@@ -1,13 +1,4 @@
-import { Component, Input } from '@angular/core';
-import { SalonService, SalonData } from '../services/salon.service';
-
-
-interface Salon {
-  name: string;
-  address: string;
-  currency: string;
-}
-
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +6,5 @@ interface Salon {
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
-
-  constructor() { }
 
 }

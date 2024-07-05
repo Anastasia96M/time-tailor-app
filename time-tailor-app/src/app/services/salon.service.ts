@@ -35,15 +35,11 @@ export interface SalonData {
   providedIn: 'root'
 })
 export class SalonService {
-  private apiUrl = 'http://localhost:3000';
+  private apiUrl = 'http://localhost:3000/data';
 
   constructor(private http: HttpClient) { }
 
   getData(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/data`);
-  }
-
-  getSalonData(): Observable<SalonData> {
-    return this.http.get<SalonData>(`${this.apiUrl}/data`);
+    return this.http.get<any>(`${this.apiUrl}`);
   }
 }

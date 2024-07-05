@@ -9,12 +9,14 @@ import { MaterialModule } from './material/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SalonService } from './services/salon.service';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ServiceTableComponent
+    ServiceTableComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
