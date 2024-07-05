@@ -26,24 +26,14 @@ const readJsonFile = (filePath, res, callback) => {
   });
 };
 
-// Helper function to write JSON file
-const writeJsonFile = (filePath, data, res, successMessage) => {
-  fs.writeFile(filePath, JSON.stringify(data, null, 2), (err) => {
-    if (err) {
-      return res.status(500).json({ error: `Error writing file: ${filePath}` });
-    }
-    res.json({ message: successMessage });
+// Endpoint to get all data
+app.get('/data', (req, res) => {
+  readJsonFile(DATA_FILE, res, (jsonData) => {
+    res.json(jsonData.services);
   });
-};
+});
 
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
-});
-
-// Endpoint to get all users' data
-app.get('/data', (req, res) => {
-  readJsonFile(DATA_FILE, res, (jsonData) => {
-    res.json(jsonData);
-  });
 });

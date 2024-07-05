@@ -12,8 +12,6 @@ export class HeaderComponent implements OnInit {
   constructor(private salonService: SalonService) { }
 
   ngOnInit(): void {
-    this.salonService.getData().subscribe(data => {
-      this.salonName = data.salon.name;
-    });
+
   }
 }

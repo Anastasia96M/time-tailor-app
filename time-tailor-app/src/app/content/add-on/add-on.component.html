@@ -1,38 +1,12 @@
-<h2 mat-dialog-title>{{ data.name }} Addons</h2>
-<mat-dialog-content>
-  <table mat-table [dataSource]="data.addons" class="mat-elevation-z8">
-    
-    <!-- Checkbox Column -->
-    <ng-container matColumnDef="select">
-      <th mat-header-cell *matHeaderCellDef></th>
-      <td mat-cell *matCellDef="let addon">
-        <mat-checkbox [(ngModel)]="addon.selected"></mat-checkbox>
-      </td>
-    </ng-container>
-
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef>Name</th>
-      <td mat-cell *matCellDef="let addon">{{addon.name}}</td>
-    </ng-container>
-
-    <!-- Duration Column -->
-    <ng-container matColumnDef="duration">
-      <th mat-header-cell *matHeaderCellDef>Duration (min)</th>
-      <td mat-cell *matCellDef="let addon">{{addon.duration}}</td>
-    </ng-container>
-
-    <!-- Price Column -->
-    <ng-container matColumnDef="price">
-      <th mat-header-cell *matHeaderCellDef>Price ($)</th>
-      <td mat-cell *matCellDef="let addon">{{addon.price}}</td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="['select', 'name', 'duration', 'price']"></tr>
-    <tr mat-row *matRowDef="let row; columns: ['select', 'name', 'duration', 'price'];"></tr>
-  </table>
-</mat-dialog-content>
-<mat-dialog-actions>
-  <button mat-button (click)="onClose()">Close</button>
-  <button mat-button (click)="onSave()">Save</button>
-</mat-dialog-actions>
+<h1 mat-dialog-title>Addons</h1>
+<div mat-dialog-content>
+  <mat-selection-list #addons>
+    <mat-list-option *ngFor="let addon of data" [value]="addon" (click)="toggleAddon(addon)">
+      {{ addon.name }} ({{ addon.duration }} mins, ${{ addon.price }})
+    </mat-list-option>
+  </mat-selection-list>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Close</button>
+  <button mat-button (click)="onSaveClick()" [disabled]="selectedAddons.length === 0">Save</button>
+</div>

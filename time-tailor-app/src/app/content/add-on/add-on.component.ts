@@ -16,17 +16,27 @@ interface Addon {
   styleUrl: './add-on.component.scss'
 })
 export class AddOnComponent {
+  selectedAddons: any[] = [];
+
   constructor(
     public dialogRef: MatDialogRef<AddOnComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { name: string, addons: Addon[] }
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
-  onSave(): void {
-    const selectedAddons = this.data.addons.filter(addon => addon.selected);
-    this.dialogRef.close(selectedAddons);
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
-  onClose(): void {
-    this.dialogRef.close();
+  onSaveClick(): void {
+    this.dialogRef.close(this.selectedAddons);
+  }
+
+  toggleAddon(addon: any): void {
+    const index = this.selectedAddons.findIndex(a => a.id === addon.id);
+    if (index > -1) {
+      this.selectedAddons.splice(index, 1);
+    } else {
+      this.selectedAddons.push(addon);
+    }
   }
 }

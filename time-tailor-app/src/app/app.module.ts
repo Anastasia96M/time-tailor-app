@@ -10,23 +10,29 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { AddOnComponent } from './content/add-on/add-on.component';
 import { FormsModule } from '@angular/forms';
+import { SalonService } from './services/salon.service';
+import { ContactInfoComponent } from './contact-info/contact-info.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     ContentComponent,
-    AddOnComponent
+    AddOnComponent,
+    ContactInfoComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    SalonService
   ],
   bootstrap: [AppComponent]
 })

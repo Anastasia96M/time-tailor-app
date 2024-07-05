@@ -5,6 +5,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { SalonService } from '../services/salon.service';
 import { AddOnComponent } from './add-on/add-on.component';
 import { MatDialog } from '@angular/material/dialog';
+import { SelectionModel } from '@angular/cdk/collections';
+import { Router } from '@angular/router';
 interface Addon {
   id: number;
   name: string;
@@ -29,17 +31,18 @@ interface Service {
   styleUrl: './content.component.scss'
 })
 export class ContentComponent {
-  displayedColumns: string[] = ['name', 'description', 'duration', 'price', 'selectedAddons', 'action', 'booking'];
-  dataSource!: MatTableDataSource<Service>;
+  displayedColumns: string[] = ['select', 'name', 'description', 'duration', 'price', 'addons', 'action'];
+  dataSource!: MatTableDataSource<any>;
+  selection = new SelectionModel<any>(true, []);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private salonService: SalonService, public dialog: MatDialog) {}
+  constructor(private dataService: SalonService, public dialog: MatDialog, private router: Router) { }
 
   ngOnInit(): void {
-    this.salonService.getData().subscribe(data => {
-      this.dataSource = new MatTableDataSource(data.services);
+    this.dataService.getData().subscribe(data => {
+      this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
@@ -54,25 +57,48 @@ export class ContentComponent {
     }
   }
 
-  seeDetails(service: Service) {
+  openAddonDialog(service: any): void {
     const dialogRef = this.dialog.open(AddOnComponent, {
-      data: { name: service.name, addons: service.addons }
+      width: '300px',
+      data: service.addons
     });
 
-    dialogRef.afterClosed().subscribe(selectedAddons => {
-      if (selectedAddons) {
-        service.selectedAddons = selectedAddons;
-        this.updateServiceDetails(service);
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        service.selectedAddons = result;
+        this.dataSource = new MatTableDataSource(this.dataSource.data); // Refresh the table
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
       }
     });
   }
 
-  updateServiceDetails(service: Service) {
-    // Trigger table update
-    this.dataSource.data = [...this.dataSource.data];
+  /** Whether the number of selected elements matches the total number of rows. */
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
   }
 
-  bookService(service: Service) {
-    alert(`Booking service: ${service.name} with addons: ${service.selectedAddons!.map(addon => addon.name).join(', ')}`);
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  masterToggle() {
+    this.isAllSelected() ?
+        this.selection.clear() :
+        this.dataSource.data.forEach(row => this.selection.select(row));
+  }
+
+  /** Checks if at least one service is selected. */
+  hasSelectedServices(): boolean {
+    return this.selection.selected.length > 0;
+  }
+
+  /** Book selected services and redirect to contact-info page. */
+  bookSelectedServices(): void {
+    if (this.hasSelectedServices()) {
+      // Perform any necessary actions before redirecting
+      this.router.navigate(['/contact-info']);
+    } else {
+      alert('No services were selected for booking.');
+    }
   }
 }
