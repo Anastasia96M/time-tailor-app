@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
 
 interface Addon {
   id: number;
@@ -11,17 +12,17 @@ interface Addon {
 
 
 @Component({
-  selector: 'app-add-on',
-  templateUrl: './add-on.component.html',
-  styleUrl: './add-on.component.scss'
+  selector: 'app-add-on-dialog',
+  templateUrl: './add-on-dialog.component.html',
+  styleUrl: './add-on-dialog.component.scss'
 })
-export class AddOnComponent {
+export class AddOnDialogComponent {
   selectedAddons: any[] = [];
 
   constructor(
-    public dialogRef: MatDialogRef<AddOnComponent>,
+    public dialogRef: MatDialogRef<AddOnDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) {}
+  ) { }
 
   onNoClick(): void {
     this.dialogRef.close();

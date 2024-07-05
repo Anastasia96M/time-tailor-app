@@ -1,39 +1,28 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { ContentComponent } from './content/content.component';
-import { HttpClientModule } from '@angular/common/http';
-import { MaterialModule } from './material/material.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { AddOnComponent } from './content/add-on/add-on.component';
-import { FormsModule } from '@angular/forms';
-import { SalonService } from './services/salon.service';
-import { ContactInfoComponent } from './contact-info/contact-info.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
+import { ServiceTableComponent } from './service-table/service-table.component';
+import { MaterialModule } from './material/material.module';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    ContentComponent,
-    AddOnComponent,
-    ContactInfoComponent
+    HomeComponent,
+    ServiceTableComponent
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
+    AppRoutingModule,
     MaterialModule,
-    FormsModule,
-    AppRoutingModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
-  providers: [
-    provideAnimationsAsync(),
-    SalonService
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

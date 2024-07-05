@@ -1,12 +1,14 @@
 import { Component, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { SalonService } from '../services/salon.service';
+import { SelectionModel } from '@angular/cdk/collections';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { SalonService } from '../services/salon.service';
-import { AddOnComponent } from './add-on/add-on.component';
-import { MatDialog } from '@angular/material/dialog';
-import { SelectionModel } from '@angular/cdk/collections';
-import { Router } from '@angular/router';
+import { AddOnDialogComponent } from './add-on-dialog/add-on-dialog.component';
+
+
 interface Addon {
   id: number;
   name: string;
@@ -26,11 +28,13 @@ interface Service {
 }
 
 @Component({
-  selector: 'app-content',
-  templateUrl: './content.component.html',
-  styleUrl: './content.component.scss'
+  selector: 'app-service-table',
+  templateUrl: './service-table.component.html',
+  styleUrl: './service-table.component.scss'
 })
-export class ContentComponent {
+export class ServiceTableComponent {
+  
+
   displayedColumns: string[] = ['select', 'name', 'description', 'duration', 'price', 'addons', 'action'];
   dataSource!: MatTableDataSource<any>;
   selection = new SelectionModel<any>(true, []);
@@ -58,8 +62,7 @@ export class ContentComponent {
   }
 
   openAddonDialog(service: any): void {
-    const dialogRef = this.dialog.open(AddOnComponent, {
-      width: '300px',
+    const dialogRef = this.dialog.open(AddOnDialogComponent, {
       data: service.addons
     });
 
@@ -101,4 +104,9 @@ export class ContentComponent {
       alert('No services were selected for booking.');
     }
   }
+
+    navigateToContactInfo() {
+    this.router.navigate(['/contact-info']);
+  }
+
 }
