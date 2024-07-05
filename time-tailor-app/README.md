@@ -25,3 +25,10 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+
+## Start the application
+1. In order to start the application open terminal in the root of application and run npm install & npm start
+2. In paralel with the first terminat open a new one in the server folder run npm install and after that node server.js
+
+After all terminals started with no errors the app is ready to work with 
